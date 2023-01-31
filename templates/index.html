@@ -8,6 +8,7 @@
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
       crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <style>
    .text-green{
@@ -34,12 +35,16 @@
 
 }
 </style>
+
 <body style="background-image: linear-gradient(to bottom , white , green)" >
 <div class="p-10 mb-20 bg-success text-white" align="left">Welcome to Books recomender system
     <ul class="nav navbar-nav">
     <li><a href="/"> Home <i class="fa fa-spinner fa-spin"></i> </a></li>
     <li><a href="/recommend">Recommend <i class="fa fa-circle-o-notch fa-spin"></i></a></li>
     <li><a href="/trending">Trendings Books<i class="fa fa-spinner fa-pulse"></i>  </a></li>
+    <li><a href="/location">Location of Reviews <i class="fa fa-map-marker"></i>  </a></li>
+    <li><a href="/age">Age based Recommend<i class="fa fa-child"></i>  </a></li>
+    <li><a href="/demo_implimentation">Demo implimentation<i class="fa fa-child"></i>  </a></li>
     </ul>
 </div>
 
@@ -57,10 +62,11 @@
     <div class="row">
     <div class="col-md-12">
         <h3 class="text-green" style="font-size:20px" align="left">
-            <u><b>Top 10 Recommended Books</b></u>
+            <u><b>Top Recommended Books </b></u>
             <i class="fa fa-cog fa-spin"></i></h3>
     </div>
         {% for i in range(book_name|length)%}
+
 
         <div class="col-md-3"  >
             <div class="card" >
@@ -73,6 +79,7 @@
 
             </div>
         </div>
+
         {% endfor %}
     </div>
 </div>
