@@ -9,6 +9,8 @@ final_book_list=pickle.load(open("final_book_list",'rb'))
 similarity=pickle.load(open('similarity.pkl','rb'))
 books=pickle.load(open('books.pkl','rb'))
 final_ratings_with_age=pickle.load(open('final_ratings_with_age.pkl','rb'))
+locations=pickle.load(open("location.pkl",'rb'))
+
 
 
 app=Flask(__name__)
@@ -73,18 +75,14 @@ def demo_ui():
     return render_template('demo_implement.html')
 @app.route('/location')
 def location():
-    data = pd.DataFrame(index=[33.5, 42.1, 51.3, 55.2, 62.5,67.5],
-                        data=[[-119.6, 34.5], [-73.9, 40.7], [80.2, 25.8], [-74.0, 40.7], [-118.3, 33.9],[100,100]])
-    df = data.reset_index()
-    df.columns = ['latitude', 'longitude', 'value']
-    m = folium.Map(location=[df['latitude'].mean(), df['longitude'].mean()], zoom_start=2)
-    for lat, lng, value in zip(df['latitude'], df['longitude'], df['value']):
-        folium.Marker([lat, lng],
-                            radius=5,
+    m = folium.Map(location=locations[5], zoom_start=4)
+    for lat, lng in locations:
+        folium.CircleMarker(location=[lat, lng],
+                            radius=6,
                             fill=True,
                             color='red',
                             fill_color='red',
-                            fill_opacity=0.7).add_child(folium.Popup(value)).add_to(m)
+                            fill_opacity=0.5).add_to(m)
 
 
     map_html=m._repr_html_()
